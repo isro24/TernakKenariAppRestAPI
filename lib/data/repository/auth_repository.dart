@@ -25,7 +25,7 @@ class AuthRepository {
       if (response.statusCode == 200) {
         final loginResponse = AuthResponseModel.fromMap(jsonResponse);
         await secureStorage.write(
-          key: 'authToken',
+          key: 'token',
           value: loginResponse.user!.token,
         );
         await secureStorage.write(
