@@ -8,97 +8,95 @@ class ProfileBuyerForm extends StatefulWidget {
   const ProfileBuyerForm({super.key});
 
   @override
-  State<ProfileBuyerForm> createState() => _ProfileBuyerFormState();
+  State<ProfileBuyerForm> createState() => ProfileBuyerInputFormState();
 }
 
-class _ProfileBuyerFormState extends State<ProfileBuyerForm> {
+class ProfileBuyerInputFormState extends State<ProfileBuyerForm> {
   final _formKey = GlobalKey<FormState>();
-  late final TextEditingController nameController;
-  late final TextEditingController addressController;
-  late final TextEditingController phoneController;
-
-  @override
-  void initState() {
-    nameController = TextEditingController();
-    addressController = TextEditingController();
-    phoneController = TextEditingController();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    nameController.dispose();
-    addressController.dispose();
-    phoneController.dispose();
-    super.dispose();
-  }
-
-  void _submitForm() {
-    if (_formKey.currentState!.validate()) {
-      final profileRequest = BuyerProfileRequestModel(
-        name: nameController.text,
-        address: addressController.text,
-        phone: phoneController.text,
-      );
-
-      context.read<ProfileBuyerBloc>().add(
-        AddProfileBuyerEvent(requestModel: profileRequest),
-      );
-    }
-  }
+  final nameController = TextEditingController();
+  final addressController = TextEditingController();
+  final phoneController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(16.0),
-      child: Form(
-        key: _formKey,
-        child: Column(
-          children: [
-            const SpaceHeight(80),
-            Text(
-              'Lengkapi Profil Anda',
-              style: TextStyle(
-                fontSize: MediaQuery.of(context).size.width * 0.05,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SpaceHeight(30),
-            CustomTextField(
-              controller: nameController,
-              label: 'Nama',
-              validator: 'Nama tidak boleh kosong',
-              prefixIcon: const Icon(Icons.person),
-            ),
-            const SpaceHeight(20),
-            CustomTextField(
-              controller: addressController,
-              label: 'Alamat',
-              validator: 'Alamat tidak boleh kosong',
-              prefixIcon: const Icon(Icons.home),
-            ),
-            const SpaceHeight(20),
-            CustomTextField(
-              controller: phoneController,
-              label: 'No HP',
-              validator: 'Nomor HP tidak boleh kosong',
-              keyboardType: TextInputType.phone,
-              prefixIcon: const Icon(Icons.phone),
-            ),
-            const SpaceHeight(30),
-            BlocBuilder<ProfileBuyerBloc, ProfileBuyerState>(
-              builder: (context, state) {
-                final isLoading = state is ProfileBuyerLoading;
+    return BlocBuilder<ProfileBuyerBloc, ProfileBuyerState>(
+      builder: (context, state) {
+        final isLoading = state is ProfileBuyerLoading;
 
-                return Button.filled(
-                  label: isLoading ? 'Menyimpan...' : 'Simpan Profil',
-                  onPressed: isLoading ? null : _submitForm,
-                );
-              },
+        return Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Form(
+            key: _formKey,
+            child: ListView(
+              children: [
+                TextFormField(
+                  controller: nameController,
+                  decoration: InputDecoration(labelText: "Nama"),
+                  validator: (value) =>
+                      value!.isEmpty ? "Nama tidak boleh kosong" : null,
+                ),
+                TextFormField(
+                  controller: addressController,
+                  decoration: InputDecoration(labelText: "Alamat"),
+                  validator: (value) =>
+                      value!.isEmpty ? "Alamat tidak boleh kosong" : null,
+                ),
+                TextFormField(
+                  controller: phoneController,
+                  decoration: InputDecoration(labelText: "No HP"),
+                  validator: (value) =>
+                      value!.isEmpty ? "Nomor HP tidak boleh kosong" : null,
+                ),
+                const SizedBox(height: 20),
+                BlocConsumer<ProfileBuyerBloc, ProfileBuyerState>(
+                  listener: (context, state) {
+                    if (state is ProfileBuyerAdded) {
+                      // Refresh profile after adding
+                      context.read<ProfileBuyerBloc>().add(
+                        GetProfileBuyerEvent(),
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text(state.profile.message)),
+                      );
+                    } else if (state is ProfileBuyerError) {
+                      ScaffoldMessenger.of(
+                        context,
+                      ).showSnackBar(SnackBar(content: Text(state.message)));
+                    }
+                  },
+                  builder: (context, state) {
+                    return ElevatedButton(
+                      onPressed: isLoading
+                          ? null
+                          : () {
+                              if (_formKey.currentState!.validate()) {
+                                final request = BuyerProfileRequestModel(
+                                  name: nameController.text,
+                                  address: addressController.text,
+                                  phone: phoneController.text,
+                                  photo: "",
+                                );
+                                context.read<ProfileBuyerBloc>().add(
+                                  AddProfileBuyerEvent(requestModel: request),
+                                );
+                              }
+                            },
+                      child: isLoading
+                          ? CircularProgressIndicator(
+                              strokeWidth: 2,
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                Colors.white,
+                              ),
+                            )
+                          : Text("Simpan Profil"),
+                    );
+                  },
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }
