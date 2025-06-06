@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:canary_template/data/models/request/auth/register_request_mode.dart';
 import 'package:canary_template/data/repository/auth_repository.dart';
-import 'package:meta/meta.dart';
 
 part 'register_event.dart';
 part 'register_state.dart';
