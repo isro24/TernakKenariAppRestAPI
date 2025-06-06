@@ -4,45 +4,20 @@ A new Flutter project.
 
 ## Getting Started
 
-<table>
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Gambar</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td align = "center">Register</td>
-      <td><img src="![Register](https://github.com/user-attachments/assets/1b47fc62-d876-45b5-977a-747cb6d59079)
-" width ="250"/></td>
-    </tr>
-    <tr>
-      <td align = "center">Login</td>
-      <td><img src="![Login](https://github.com/user-attachments/assets/0aff6805-780c-4cb8-a1c3-665362dcea11)
-" width ="250"/></td>
-    </tr>
-    <tr>
-      <td align = "center">Profile Form</td>
-      <td><img src="![Profile Form](https://github.com/user-attachments/assets/d29cbbe4-61b0-47d4-8b56-fb9d9f5980a2)
-" width ="250"/></td>
-    </tr>
-    <tr>
-      <td align = "center">Profile View</td>
-      <td><img src="![Profile View](https://github.com/user-attachments/assets/ffe7d9d1-ea10-4393-8732-521142841dee)
-" width ="250"/></td>
-    </tr>
-    <tr>
-      <td align = "center">Home Screen</td>
-      <td><img src="![Daftar Burung](https://github.com/user-attachments/assets/f425f1b3-1859-436d-8f79-81dd273384ce)
-" width ="250"/></td>
-    </tr>
-    <tr>
-      <td align = "center">Logout</td>
-      <td><img src="![Logout](https://github.com/user-attachments/assets/a8d41776-9e03-4fd3-a390-939938c56e46)
-" width ="250"/></td>
-    </tr>
-  </tbody>
-</table>
+1. Register
+![Register](https://github.com/user-attachments/assets/6c23d923-d0db-48f4-ac31-2087e6678cb0)
 
+2. Login
+![Login](https://github.com/user-attachments/assets/ee216de3-5087-472b-a3c0-6e10166e65a4)
 
+3. Profile Form
+![Profile Form](https://github.com/user-attachments/assets/24a8cff8-deb3-466b-8f23-bc47051d9fbe)
+
+4. Profile View
+![Profile View](https://github.com/user-attachments/assets/a0b707fd-28e9-4f27-a790-7f1416355c0a)
+
+5. Home Screen
+![Daftar Burung](https://github.com/user-attachments/assets/9631635a-da59-4d22-9a73-9aba7a5dbb49)
+
+6. Logout
+![Logout](https://github.com/user-attachments/assets/2401272c-6341-4dc5-ab2a-269353315f0f)
