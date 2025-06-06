@@ -15,6 +15,13 @@ class BuyerHomeScreen extends StatefulWidget {
 
 class _BuyerHomeScreenState extends State<BuyerHomeScreen> {
   @override
+    void initState() {
+      super.initState();
+      context.read<GetBurungTersediaBloc>().add(
+        GetAllBurungTersediaEvent(),
+      );
+    }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
