@@ -127,6 +127,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                   email: emailController.text,
                                   password: passwordController.text,
                                 );
+                                context.read<LoginBloc>().add(
+                                  LoginRequested(requestModel: request),
+                                );
                               }
                             },
                       label: state is LoginLoading ? 'Memuat...' : 'Masuk',
