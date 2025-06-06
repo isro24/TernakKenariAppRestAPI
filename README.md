@@ -31,7 +31,7 @@ A new Flutter project.
     <tr>
       <td>4</td>
       <td align="center">Profile View</td>
-      <td><img src="https://github.com/user-attachments/assets/a0b707fd-28e9-4f27-a790-7f1416355c0a" width="250"/></td>
+      <td><img src="https://github.com/user-attachments/assets/bed5437d-a185-4170-92be-c70c617549f4" width="250"/></td>
     </tr>
     <tr>
       <td>5</td>
