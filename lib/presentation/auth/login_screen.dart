@@ -1,11 +1,8 @@
-import 'package:canary_template/core/components/components.dart';
-import 'package:canary_template/core/components/spaces.dart';
 import 'package:canary_template/core/core.dart';
 import 'package:canary_template/data/models/request/auth/login_request_model.dart';
 import 'package:canary_template/presentation/auth/bloc/login/login_bloc.dart';
 import 'package:canary_template/presentation/auth/register_screen.dart';
 import 'package:canary_template/presentation/buyer/buyer_profile_screen.dart';
-import 'package:canary_template/presentation/buyer/profile/widget/profile_buyer_form.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

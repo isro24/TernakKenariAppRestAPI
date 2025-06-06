@@ -1,6 +1,3 @@
-import 'package:canary_template/core/components/components.dart';
-import 'package:canary_template/core/components/spaces.dart';
-import 'package:canary_template/core/constants/colors.dart';
 import 'package:canary_template/core/core.dart';
 import 'package:canary_template/data/models/request/auth/register_request_mode.dart';
 import 'package:canary_template/presentation/auth/bloc/register/register_bloc.dart';
@@ -160,7 +157,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
                             context.pushAndRemoveUntil(
-                              const RegisterScreen(),
+                              const LoginScreen(),
                               (route) => false,
                             );
                           },
